@@ -1,0 +1,25 @@
+{
+    "target": "127.0.0.1",
+    "open_ports": [
+        135,
+        445,
+        2869,
+        5040,
+        5357,
+        5939,
+        7250,
+        7680,
+        8000
+    ],
+    "banners": {
+        "135": "No banner",
+        "445": "No banner",
+        "2869": "No banner",
+        "5040": "No banner",
+        "5357": "No banner",
+        "5939": "No banner",
+        "7250": "No banner",
+        "7680": "No banner",
+        "8000": "No banner"
+    }
+}

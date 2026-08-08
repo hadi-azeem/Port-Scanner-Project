@@ -1,10 +1,12 @@
 import socket
 import threading
 import argparse
+import json
 
 parser = argparse.ArgumentParser(description="TCP Port Scanner")
 parser.add_argument("ip", help="Target IP address")
 parser.add_argument("--ports", help="Port range e.g. 1-1024", default="1-1024")
+parser.add_argument("--output", help="Save results to a JSON file e.g. results.json")
 
 args = parser.parse_args()
 
@@ -47,4 +49,14 @@ for t in threads:
 print("Scan complete")
 for port in sorted(open_ports):
     print(f"Port {port}: {port_banners[port]}")
+
+if args.output:
+    results = {
+        "target": IP_ADDRESS,
+        "open_ports": sorted(open_ports),
+        "banners": {str(port): port_banners[port] for port in sorted(open_ports)}
+    }
+    with open(args.output, "w") as f:
+        json.dump(results, f, indent=4)
+    print(f"Results saved to {args.output}")
 
